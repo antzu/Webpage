@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 
 class Projects extends Component {
+
+  componentWillMount(){
+    this.props.fetchProjects();
+  }
+
+
   render() {
     return (
       
@@ -22,7 +30,7 @@ class Projects extends Component {
                   <h4>Project 1</h4>
                 </div>
                 <div className="project-text">
-                  Description
+                  {console.log(this.props.projects)}
                 </div>
               </div>
             </div>
@@ -48,4 +56,8 @@ class Projects extends Component {
   }
 }
 
-export default Projects;
+function mapStateToProps(state){
+  return { projects: state.projects };
+}
+
+export default connect(mapStateToProps, actions)(Projects);

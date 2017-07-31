@@ -14,7 +14,7 @@ import Projects from './components/projects';
 import Blog from './components/blog';
 import ContactMe from './components/contactme';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
 ReactDOM.render(
