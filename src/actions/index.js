@@ -12,7 +12,7 @@ export function fetchProjects(){
 		.then(response => {
 			dispatch({ 
 				type: FETCH_PROJECTS,
-				payload: response.data.projects
+				payload: response.data
 			});
 
 			browserHistory.push('/projects');

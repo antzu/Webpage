@@ -169,7 +169,7 @@ div .aboutme {
 
 
 div .projects {
-	background-color: yellow;
+	
 	grid-area: main;
 
 	display: grid;
@@ -189,7 +189,11 @@ div .projects {
 
 .projects-area {
 	grid-area: projects-area;
+	
+	display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .project {
@@ -201,10 +205,16 @@ div .projects {
 
 	width: 50%;
 	height: 50%;
+	min-width: 50%;
 }
 
 .project-pic {
-	width: 50%;
+	width: 40%;
+}
+
+.project-pic img {
+	max-height: 100%;
+	max-width: 100%;
 }
 
 .project-content {

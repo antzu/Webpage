@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import { Link } from 'react-router';
 
 
 class Projects extends Component {
@@ -9,8 +10,28 @@ class Projects extends Component {
     this.props.fetchProjects();
   }
 
+  renderProjects(){
+      return this.props.projects.map(project => {
+        return(
+            <div className="project" key={project.id}>
+              <div className="project-pic">
+                <img src="../img/project1.jpg" />
+              </div>
+              <div className="project-content">
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+              </div>
+
+            </div>
+          );
+      });
+
+  }
+
 
   render() {
+
+  
     return (
       
       <div className="projects">
@@ -20,35 +41,12 @@ class Projects extends Component {
       	<div className="projects-contacts">
       		Here will be all the different social media contact glyphicons
       	</div>
+
       	<div className="projects-area">
-            <div className="project">
-              <div className="project-pic">
-                pic here
-              </div>
-              <div className="project-content">
-                <div className="project-title">
-                  <h4>Project 1</h4>
-                </div>
-                <div className="project-text">
-                  {console.log(this.props.projects)}
-                </div>
-              </div>
-            </div>
+            
+          {this.renderProjects()}
 
-
-            <div className="project">
-              <div className="project-pic">
-                pic here
-              </div>
-              <div className="project-content">
-                <div className="project-title">
-                  <h4>Project 2</h4>
-                </div>
-                <div className="project-text">
-                  Description
-                </div>
-              </div>
-            </div>
+            
       	</div>
       	
       </div>
@@ -57,7 +55,7 @@ class Projects extends Component {
 }
 
 function mapStateToProps(state){
-  return { projects: state.projects };
+  return { projects: state.contents.projects };
 }
 
 export default connect(mapStateToProps, actions)(Projects);

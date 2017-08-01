@@ -3,12 +3,13 @@ import Header from './header';
 
 var bg1 = '../img/background-lamp.jpeg';
 var bg2 = '../img/brick.jpg';
+var bg3 = '../img/background-wooden.jpeg';
 
 
 export default class App extends Component {
 
 
-	renderBack(page) {
+	renderBack(page, displayName) {
 
 		switch(page) {
 			case "Home":
@@ -16,21 +17,26 @@ export default class App extends Component {
 			case "AboutMe":
 				return bg2;
 		}
+
+		if (displayName === "Connect(Projects)"){
+			
+		}
 		
 	}
 	
 
 	render() {
 
-  		const { name } = this.props.children.type;
+  		const { name, displayName } = this.props.children.type;
 
     	return (
 
 
-	    	<div className='app' style={{backgroundImage: `url(${this.renderBack(name)})`}}>
+	    	<div className='app' style={{backgroundImage: `url(${this.renderBack(name, displayName)})`}}>
 	      		<Header />
 	      		{this.props.children}
-	      		{console.log(this.props.children.type.name)}
+
+	      		
 	      		
 	      	</div>
     	);
